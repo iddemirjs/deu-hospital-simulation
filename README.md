@@ -112,6 +112,6 @@ outputting the same results every time, there must be something wrong in your pr
 
 |macro|description|status|
 |-|-|:-:|
-|`getting terminal arguments`|All procces can be export with for csv file|:soon:|
+|`getting terminal arguments`|All actions can be export with for csv file|:soon:|
 |`another type output`|Program should be creatable different outputs (pdf,csv)|:soon:|
-|`another type output`|Program should be runnable different operating system.|:soon:|
+|`suppleness with another OS `|Program should be runnable different operating system.|:soon:|
