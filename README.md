@@ -9,7 +9,7 @@ patients:
 * GNU Compiler Collection (gcc) on running linux.
 * If you have linux Dockerfile already created.
 
-## installation with docker
+## Running with docker
 First 
 ```
 $ docker build . -t container_name 
@@ -19,7 +19,7 @@ Then
 $ docker run -v --rm -it container_name
 ```
 
-## installation with docker
+## Running with linux GCC
 First
 ```
 $ gcc main.c -lpthread
