@@ -1,7 +1,7 @@
 # DEU HOSPITAL SIMULATIONS
 
 In this assignment, you are asked to create a simulation of a hospital using POSIX
-Threads, Mutexes and Semaphores. Your hospital should have the following facilities for
+Threads, Mutexes and Semaphores. DEU hospital should have the following facilities for
 patients:
 
 # Requirements
@@ -101,12 +101,11 @@ During any of waiting period of previously given operations, if the patient is s
 hungry or needs go to a toilet, they can buy food from hospital cafe or go to the hospital
 restroom. At the end of every waiting period, these hunger and restroom meters are
 increased by a random value between 1 and given global increase rates.
-Your program should print every operation or event that happens inside it. It should be in
-orderly and informative format. Please create your own console output format
+this program should print every operation or event that happens inside it. It should be in
+orderly and informative format. Please create this own console output format
 individually and according to what you think is the best.
 Because of randomization of costs, waiting times and requirement number of surgeons
-and nurses for surgeries, every execution of your program should be unique. If it is
-outputting the same results every time, there must be something wrong in your program.
+and nurses for surgeries, every execution of this program should be unique. 
 
 ## todo list
 
