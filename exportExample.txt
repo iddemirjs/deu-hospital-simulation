@@ -1,0 +1,159 @@
+Patient 0 ready to registration.
+Patient 4 is waiting on registration door.
+Patient 3 is waiting on registration door.
+Patient 1 ready to registration.
+Patient 6 is waiting on registration door.
+Patient 5 is waiting on registration door.
+Patient 2 is waiting on registration door.
+Patient 9 is waiting on registration door.
+Patient 7 is waiting on registration door.
+Patient 8 is waiting on registration door.
+Registered patient number : 0
+Patient 0 : { hungerScore : 21, toiletScore : 17, disease : 1 }
+    -New hospital budget is : 100
+Patient 0 ready to general practitioner.
+Registered patient number : 1
+Patient 1 : { hungerScore : 103, toiletScore : 106, disease : 1 }
+    -New hospital budget is : 200
+Patient 1 ready to cafe.
+Patient 4 ready to registration.
+Patient 3 is waiting on registration door.
+Patient 6 is waiting on registration door.
+Patient 9 is waiting on registration door.
+Patient 7 ready to registration.
+Patient 8 is waiting on registration door.
+Patient 5 is waiting on registration door.
+Patient 2 is waiting on registration door.
+Registered patient number : 7
+Patient 7 : { hungerScore : 107, toiletScore : 71, disease : 0 }
+    -New hospital budget is : 300
+Patient 7 ready to cafe.
+*After Cafe visiting hunger score of Patient 1 : 0
+Patient 1 : { hungerScore : 0, toiletScore : 115, disease : 1 }
+Patient 1 ready to restroom.
+General Practitioner took care of Patient 0
+Patient 0 : { hungerScore : 30, toiletScore : 24, disease : 1 }
+Needs op surgeon 1,Needs op nurse : 1
+Registered patient number : 4
+Patient 4 : { hungerScore : 68, toiletScore : 104, disease : 0 }
+    -New hospital budget is : 600
+Patient 4 ready to restroom.
+Patient 6 ready to registration.
+Patient 2 is waiting on registration door.
+*After Cafe visiting hunger score of Patient 7 : 0
+Patient 7 : { hungerScore : 0, toiletScore : 72, disease : 0 }
+Patient 7 ready to general practitioner.
+Patient 3 ready to registration.
+Patient 5 is waiting on registration door.
+Patient 8 is waiting on registration door.
+Patient 9 is waiting on registration door.
+Registered patient number : 3
+Patient 3 : { hungerScore : 80, toiletScore : 65, disease : 1 }
+    -New hospital budget is : 900
+Patient 3 ready to general practitioner.
+*After Restroom visiting toilet score of Patient 1 : 0
+Patient 1 : { hungerScore : 2, toiletScore : 0, disease : 1 }
+Patient 1 is waiting on general practitioner door.
+*After Restroom visiting toilet score of Patient 4 : 0
+Patient 4 : { hungerScore : 78, toiletScore : 0, disease : 0 }
+Patient 4 is waiting on general practitioner door.
+General Practitioner took care of Patient 7
+Patient 7 : { hungerScore : 8, toiletScore : 81, disease : 0 }
+The patient is healthy. Because of that Patient 7 left the hospital.
+Patient 0 ready to operation.
+Surgery process for Patient 0 then Hospital wallet is : 1250
+Patient 0 : { hungerScore : 33, toiletScore : 35, disease : 1 }
+Registered patient number : 6
+Patient 6 : { hungerScore : 86, toiletScore : 59, disease : 0 }
+    -New hospital budget is : 1350
+Patient 6 ready to general practitioner.
+Patient 2 ready to registration.
+Patient 8 ready to registration.
+Patient 5 is waiting on registration door.
+Patient 9 is waiting on registration door.
+Patient 1 is waiting on general practitioner door.
+Patient 4 is waiting on general practitioner door.
+Registered patient number : 2
+Patient 2 : { hungerScore : 124, toiletScore : 101, disease : 0 }
+    -New hospital budget is : 1450
+Patient 2 ready to cafe.
+Registered patient number : 8
+Patient 8 : { hungerScore : 115, toiletScore : 116, disease : 1 }
+    -New hospital budget is : 1550
+Patient 8 ready to cafe.
+General Practitioner took care of Patient 3
+Patient 3 : { hungerScore : 85, toiletScore : 83, disease : 1 }
+Needs op surgeon 1,Needs op nurse : 4
+Patient 5 ready to registration.
+Patient 9 ready to registration.
+General Practitioner took care of Patient 6
+Patient 6 : { hungerScore : 95, toiletScore : 64, disease : 0 }
+The patient is healthy. Because of that Patient 6 left the hospital.
+Patient 1 ready to general practitioner.
+Patient 4 ready to general practitioner.
+General Practitioner took care of Patient 4
+Patient 4 : { hungerScore : 106, toiletScore : 28, disease : 0 }
+Patient 4 is waiting on cafe door.
+*After Cafe visiting hunger score of Patient 2 : 0
+Patient 2 : { hungerScore : 0, toiletScore : 111, disease : 0 }
+Patient 2 ready to restroom.
+Registered patient number : 5
+Patient 5 : { hungerScore : 53, toiletScore : 31, disease : 0 }
+    -New hospital budget is : 1850
+Patient 5 ready to general practitioner.
+*After Cafe visiting hunger score of Patient 8 : 0
+Patient 8 : { hungerScore : 0, toiletScore : 118, disease : 1 }
+Patient 8 ready to restroom.
+General Practitioner took care of Patient 5
+Patient 5 : { hungerScore : 60, toiletScore : 35, disease : 0 }
+The patient is healthy. Because of that Patient 5 left the hospital.
+Registered patient number : 9
+Patient 9 : { hungerScore : 21, toiletScore : 98, disease : 1 }
+    -New hospital budget is : 2150
+Patient 9 is waiting on restroom door.
+*After Restroom visiting toilet score of Patient 2 : 0
+Patient 2 : { hungerScore : 10, toiletScore : 0, disease : 0 }
+Patient 2 ready to general practitioner.
+*After Restroom visiting toilet score of Patient 8 : 0
+Patient 8 : { hungerScore : 9, toiletScore : 0, disease : 1 }
+Patient 8 is waiting on general practitioner door.
+General Practitioner took care of Patient 1
+Patient 1 : { hungerScore : 27, toiletScore : 17, disease : 1 }
+Needs op surgeon 4,Needs op nurse : 5
+Patient 4 ready to cafe.
+*After Cafe visiting hunger score of Patient 4 : 0
+Patient 4 : { hungerScore : 0, toiletScore : 38, disease : 0 }
+The patient is healthy. Because of that Patient 4 left the hospital.
+Patient 9 ready to restroom.
+*After Restroom visiting toilet score of Patient 9 : 0
+Patient 9 : { hungerScore : 35, toiletScore : 0, disease : 1 }
+Patient 9 ready to general practitioner.
+Patient 8 is waiting on general practitioner door.
+Patient 1 ready to operation.
+Surgery process for Patient 1 then Hospital wallet is : 3200
+Patient 1 : { hungerScore : 34, toiletScore : 30, disease : 1 }
+Patient 3 ready to operation.
+Surgery process for Patient 3 then Hospital wallet is : 3700
+Patient 3 : { hungerScore : 101, toiletScore : 93, disease : 1 }
+Patient 3 ready to cafe.
+General Practitioner took care of Patient 2
+Patient 2 : { hungerScore : 17, toiletScore : 10, disease : 0 }
+The patient is healthy. Because of that Patient 2 left the hospital.
+General Practitioner took care of Patient 9
+Patient 9 : { hungerScore : 52, toiletScore : 8, disease : 1 }
+Needs op surgeon 5,Needs op nurse : 3
+Patient 8 ready to general practitioner.
+*After Cafe visiting hunger score of Patient 3 : 0
+Patient 3 : { hungerScore : 0, toiletScore : 97, disease : 1 }
+Patient 3 ready to restroom.
+*After Restroom visiting toilet score of Patient 3 : 0
+Patient 3 : { hungerScore : 4, toiletScore : 0, disease : 1 }
+General Practitioner took care of Patient 8
+Patient 8 : { hungerScore : 21, toiletScore : 25, disease : 1 }
+Needs op surgeon 5,Needs op nurse : 1
+Patient 9 ready to operation.
+Surgery process for Patient 9 then Hospital wallet is : 4750
+Patient 9 : { hungerScore : 63, toiletScore : 16, disease : 1 }
+Patient 8 ready to operation.
+Surgery process for Patient 8 then Hospital wallet is : 5500
+Patient 8 : { hungerScore : 32, toiletScore : 33, disease : 1 }

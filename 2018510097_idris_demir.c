@@ -88,7 +88,7 @@ void generalPractitioner(Patient *patient);
 void pharmacy(Patient *patient);
 void bloodLab(Patient *patient);
 void surgery(Patient *patient);
-void sectionAvailabilityWaiter(sem_t *waited_sem, Patient *patient,char department[]);
+void sectionAvailabilityWaiter(sem_t *waited_sem, Patient *patient,char department[], int time);
 
 int main(void) {
     srand ( time(NULL) );
@@ -103,16 +103,13 @@ int main(void) {
  */
 void *registration(void* patient){
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&registration_sem,comingPatient,"registration");
-    sem_wait(&registration_sem);
-    usleep(1000*(randomNumber(1,REGISTRATION_TIME)));
+    sectionAvailabilityWaiter(&registration_sem,comingPatient,"registration",REGISTRATION_TIME);
     printf("Registered patient number : %d\n",comingPatient->patientId);
     toiletUpdater(comingPatient);
     hungerUpdater(comingPatient);
     displayPatientInfo(comingPatient);
     HOSPITAL_WALLET += REGISTRATION_COST;
     printf("    -New hospital budget is : %d\n", HOSPITAL_WALLET);
-    sem_post(&registration_sem);
     managerRestroomHunger(comingPatient);
     generalPractitioner(comingPatient);
 }
@@ -123,15 +120,11 @@ void *registration(void* patient){
  */
 void *cafe(void* patient ){
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&cafe_sem,comingPatient,"cafe");
-    sem_wait(&cafe_sem);
-    usleep(1000*(randomNumber(1,CAFE_TIME)));
+    sectionAvailabilityWaiter(&cafe_sem,comingPatient,"cafe",CAFE_TIME);
     HOSPITAL_WALLET += CAFE_COST;
-    toiletUpdater(comingPatient);
     comingPatient->hungerScore = 0;
     printf("*After Cafe visiting hunger score of Patient %d : %d\n",comingPatient->patientId,comingPatient->hungerScore);
     displayPatientInfo(comingPatient);
-    sem_post(&cafe_sem);
     managerRestroomHunger(comingPatient);
 }
 /**
@@ -141,14 +134,10 @@ void *cafe(void* patient ){
  */
 void *restroom(void* patient){
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&restroom_sem,comingPatient,"restroom");
-    sem_wait(&restroom_sem);
-    usleep(1000*(randomNumber(1,RESTROOM_TIME)));
-    hungerUpdater(comingPatient);
+    sectionAvailabilityWaiter(&restroom_sem,comingPatient,"restroom",RESTROOM_TIME);
     comingPatient->toiletScore = 0;
     printf("*After Restroom visiting toilet score of Patient %d : %d\n",comingPatient->patientId,comingPatient->toiletScore);
     displayPatientInfo(comingPatient);
-    sem_post(&restroom_sem);
     managerRestroomHunger(comingPatient);
 }
 /**
@@ -157,14 +146,11 @@ void *restroom(void* patient){
  */
 void generalPractitioner(Patient *patient) {
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&generalPractitioner_sem,comingPatient,"general practitioner");
-    sem_wait(&generalPractitioner_sem);
+    sectionAvailabilityWaiter(&generalPractitioner_sem,comingPatient,"general practitioner",GP_TIME);
     printf("General Practitioner took care of Patient %d\n",comingPatient->patientId);
     toiletUpdater(comingPatient);
     hungerUpdater(comingPatient);
     displayPatientInfo(comingPatient);
-    usleep(1000*(randomNumber(1,GP_TIME)));
-    sem_post(&generalPractitioner_sem);
     managerRestroomHunger(comingPatient);
     if (comingPatient->disease == 0){
         printf("The patient is healthy. Because of that Patient %d left the hospital.\n",patient->patientId);
@@ -188,6 +174,7 @@ void surgery(Patient *patient) {
         printf("Needs op surgeon %d,Needs op nurse : %d \n",needSurgeon,needNurse);
         if(sem_trywait(&surgery_sem)==0 && needSurgeon <= SURGEON_NUMBER && needNurse <= NURSE_NUMBER)
         {
+            usleep(1000*(randomNumber(1,SURGERY_TIME)));
             printf("Patient %d ready to operation.\n",comingPatient->patientId);
             sem_post(&surgery_sem);
             SURGEON_NUMBER-=needSurgeon;
@@ -201,14 +188,11 @@ void surgery(Patient *patient) {
             toiletUpdater(comingPatient);
         }
     }
-    sem_wait(&surgery_sem);
-    usleep(1000*(randomNumber(1,SURGERY_TIME)));
     HOSPITAL_WALLET += (needSurgeon * SURGERY_SURGEON_COST + needNurse * SURGERY_NURSE_COST) + SURGERY_OR_COST;
     toiletUpdater(comingPatient);
     hungerUpdater(comingPatient);
     printf("Surgery process for Patient %d then Hospital wallet is : %d\n",comingPatient->patientId,HOSPITAL_WALLET);
     displayPatientInfo(comingPatient);
-    sem_post(&surgery_sem);
     SURGEON_NUMBER+=needSurgeon;
     NURSE_NUMBER+=needSurgeon;
     managerRestroomHunger(comingPatient);
@@ -219,9 +203,7 @@ void surgery(Patient *patient) {
  */
 void bloodLab(Patient *patient) {
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&bloodLab_sem,comingPatient,"general practitioner");
-    sem_wait(&bloodLab_sem);
-    usleep(1000*(randomNumber(1,BLOOD_LAB_TIME)));
+    sectionAvailabilityWaiter(&bloodLab_sem,comingPatient,"general practitioner",BLOOD_LAB_TIME);
     HOSPITAL_WALLET += BLOOD_LAB_COST;
     toiletUpdater(comingPatient);
     hungerUpdater(comingPatient);
@@ -231,7 +213,6 @@ void bloodLab(Patient *patient) {
     if (patient->disease == 0){
         printf("The patient is healthy now left here.\n");
     }
-    sem_post(&bloodLab_sem);
     managerRestroomHunger(comingPatient);
     if (patient->disease != 0) {
         generalPractitioner(comingPatient);
@@ -243,16 +224,13 @@ void bloodLab(Patient *patient) {
  */
 void pharmacy(Patient *patient) {
     Patient *comingPatient = &(*(Patient*) patient);
-    sectionAvailabilityWaiter(&pharmacy_sem,comingPatient,"pharmacy");
-    sem_wait(&pharmacy_sem);
-    usleep(1000*(randomNumber(1,PHARMACY_TIME)));
+    sectionAvailabilityWaiter(&pharmacy_sem,comingPatient,"pharmacy",PHARMACY_TIME);
     HOSPITAL_WALLET += randomNumber(0,PHARMACY_COST);
     toiletUpdater(comingPatient);
     hungerUpdater(comingPatient);
     printf("Pharmacy gave a medicine to Patient %d and Patient %d left hospital.\n",
            comingPatient->patientId,comingPatient->patientId);
     displayPatientInfo(comingPatient);
-    sem_post(&pharmacy_sem);
     managerRestroomHunger(comingPatient);
 }
 
@@ -262,7 +240,7 @@ void pharmacy(Patient *patient) {
  * @param patient
  * @param department
  */
-void sectionAvailabilityWaiter(sem_t *waited_sem, Patient *patient,char department[]) {
+void sectionAvailabilityWaiter(sem_t *waited_sem, Patient *patient,char department[],int time) {
     Patient *comingPatient = &(*(Patient*) patient);
     while(1){
         if(sem_trywait(&(*(sem_t*) waited_sem)) != 0)
@@ -274,6 +252,7 @@ void sectionAvailabilityWaiter(sem_t *waited_sem, Patient *patient,char departme
         }
         else{
             printf("Patient %d ready to %s.\n",comingPatient->patientId,department);
+            usleep(1000*(randomNumber(1,time)));
             sem_post(&(*(sem_t*) waited_sem));
             break;
         }

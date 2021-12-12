@@ -4,6 +4,10 @@ In this assignment, you are asked to create a simulation of a hospital using POS
 Threads, Mutexes and Semaphores. DEU hospital should have the following facilities for
 patients:
 
+## GITHUB URL
+
+https://github.com/iddemirjs/deu-hospital-simulation
+
 # Requirements
 
 * GNU Compiler Collection (gcc) on running linux.
